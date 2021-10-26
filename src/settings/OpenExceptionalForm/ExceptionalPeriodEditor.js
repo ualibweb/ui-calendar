@@ -8,12 +8,13 @@ import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
-  Col,
-  Row,
   Checkbox,
+  Col,
   Datepicker,
-  TextField,
+  Label,
   List,
+  Row,
+  TextField,
   Timepicker
 } from '@folio/stripes/components';
 
@@ -138,8 +139,8 @@ class ExceptionalPeriodEditor extends React.Component {
 
     const items = this.state.servicePoints;
     const itemFormatter = (item) => (
-      <li data-test-service-point key={item.id}>
-        <div className="CircleDiv" style={{ background: item.color }} />
+      <li data-test-service-point key={item.id} style={{ justifyContent: "flex-start" }}>
+        <div className="CircleDiv" style={{ background: item.color, marginRight: ".5rem" }} />
         <Checkbox
           id={item.id}
           label={item.name}
@@ -148,7 +149,6 @@ class ExceptionalPeriodEditor extends React.Component {
         />
       </li>
     );
-    const isEmptyMessage = 'No items to show';
     const allSelectorText = `ui-calendar.${allSelector ? 'selectAll' : 'deselectAll'}`;
 
     return (
@@ -203,13 +203,14 @@ class ExceptionalPeriodEditor extends React.Component {
         <Row>
           <Col>
             <div data-test-service-points>
-              <div data-test-service-points-title>
-                <FormattedMessage id="ui-calendar.settings.openingPeriodEnd" />
-              </div>
+              <Label required data-test-service-points-label>
+                <FormattedMessage id="ui-calendar.affectedServicePoints" />
+              </Label>
               <List
                 items={items}
                 itemFormatter={itemFormatter}
-                isEmptyMessage={isEmptyMessage}
+                isEmptyMessage={<FormattedMessage id="ui-calendar.noServicePoints" />}
+                marginBottom0
               />
             </div>
           </Col>
