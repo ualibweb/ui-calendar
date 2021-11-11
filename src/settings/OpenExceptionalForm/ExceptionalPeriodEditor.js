@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Field,
-  reduxForm
+  reduxForm,
 } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -15,7 +15,7 @@ import {
   List,
   Row,
   TextField,
-  Timepicker
+  Timepicker,
 } from '@folio/stripes/components';
 
 import { ALL_DAY } from '../constants';
@@ -139,8 +139,15 @@ class ExceptionalPeriodEditor extends React.Component {
 
     const items = this.state.servicePoints;
     const itemFormatter = (item) => (
-      <li data-test-service-point key={item.id} style={{ justifyContent: "flex-start" }}>
-        <div className="CircleDiv" style={{ background: item.color, marginRight: ".5rem" }} />
+      <li
+        data-test-service-point
+        key={item.id}
+        className="servicePointSelectorRow"
+      >
+        <div
+          className="circleDiv"
+          style={{ background: item.color }}
+        />
         <Checkbox
           id={item.id}
           label={item.name}
@@ -203,8 +210,11 @@ class ExceptionalPeriodEditor extends React.Component {
         <Row>
           <Col>
             <div data-test-service-points>
-              <Label required data-test-service-points-label>
-                <FormattedMessage id="ui-calendar.affectedServicePoints" />
+              <Label
+                required
+                data-test-service-points-label
+              >
+                <FormattedMessage id="ui-calendar.settings.openingPeriodEnd" />
               </Label>
               <List
                 items={items}
