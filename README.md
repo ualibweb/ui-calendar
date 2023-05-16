@@ -1,5 +1,7 @@
 # ui-calendar
 
+# This work has been merged into the main `folio-org` repository; all future work should be done in that repository.
+
 Copyright (C) 2017-2022 The Open Library Foundation
 
 This software is distributed under the terms of the Apache License,
